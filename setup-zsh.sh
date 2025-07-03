@@ -4,12 +4,15 @@ set -e
 
 echo "🚀 Instalando pacotes base..."
 sudo apt update
-sudo apt install -y zsh git curl bat gh gpg
+sudo apt install -y zsh git curl bat gh gpg wget
 
-echo "📦 Instalando eza via .deb..."
-wget https://github.com/eza-community/eza/releases/latest/download/eza_ubuntu_amd64.deb
-sudo apt install -y ./eza_ubuntu_amd64.deb
-rm eza_ubuntu_amd64.deb
+echo "📦 Adicionando repositório do eza (válido para todas as versões Debian/Ubuntu)..."
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+sudo apt update
+sudo apt install -y eza
 
 echo "📦 Clonando plugins para ~/.zsh..."
 mkdir -p ~/.zsh
