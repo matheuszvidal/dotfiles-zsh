@@ -30,10 +30,10 @@ compinit
 # ─── ALIASES MODERNOS ─────────────────────────────────────────────────────────
 
 # Substituto do 'ls' com ícones e diretórios primeiro
-alias ls='exa --icons --group-directories-first --color=always'
-alias ll='exa -l --icons --group-directories-first --color=always'
-alias la='exa -la --icons --group-directories-first --color=always'
-alias lt='exa -T --icons --color=always' # árvore de diretórios
+alias ls='eza --icons --group-directories-first --color=always'
+alias ll='eza -l --icons --group-directories-first --color=always'
+alias la='eza -la --icons --group-directories-first --color=always'
+alias lt='eza -T --icons --color=always' # árvore de diretórios
 
 # Substituto do 'cat' com syntax highlight
 alias cat='batcat --style=plain --paging=never'
