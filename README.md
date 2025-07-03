@@ -22,7 +22,7 @@ Este repositório contém:
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/<matheuszvidal>/dotfiles-zsh.git
+git clone https://github.com/matheuszvidal/dotfiles-zsh.git
 cd dotfiles-zsh
 ```
 
