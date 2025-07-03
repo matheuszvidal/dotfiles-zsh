@@ -6,11 +6,10 @@ echo "🚀 Instalando pacotes base..."
 sudo apt update
 sudo apt install -y zsh git curl bat gh gpg
 
-echo "📦 Instalando eza..."
-curl -fsSL https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | gpg --dearmor | sudo tee /usr/share/keyrings/eza-archive-keyring.gpg >/dev/null
-echo "deb [signed-by=/usr/share/keyrings/eza-archive-keyring.gpg] https://eza-community.github.io/eza-deb stable main" | sudo tee /etc/apt/sources.list.d/eza.list >/dev/null
-sudo apt update
-sudo apt install -y eza
+echo "📦 Instalando eza via .deb..."
+wget https://github.com/eza-community/eza/releases/latest/download/eza_ubuntu_amd64.deb
+sudo apt install -y ./eza_ubuntu_amd64.deb
+rm eza_ubuntu_amd64.deb
 
 echo "📦 Clonando plugins para ~/.zsh..."
 mkdir -p ~/.zsh
