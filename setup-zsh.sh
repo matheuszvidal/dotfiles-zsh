@@ -4,7 +4,13 @@ set -e
 
 echo "🚀 Instalando pacotes base..."
 sudo apt update
-sudo apt install zsh git curl eza bat gh -y
+sudo apt install -y zsh git curl bat gh gpg
+
+echo "📦 Instalando eza..."
+curl -fsSL https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | gpg --dearmor | sudo tee /usr/share/keyrings/eza-archive-keyring.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/eza-archive-keyring.gpg] https://eza-community.github.io/eza-deb stable main" | sudo tee /etc/apt/sources.list.d/eza.list >/dev/null
+sudo apt update
+sudo apt install -y eza
 
 echo "📦 Clonando plugins para ~/.zsh..."
 mkdir -p ~/.zsh
@@ -14,8 +20,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/syntax
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/autosuggestions
 git clone https://github.com/zsh-users/zsh-completions ~/.zsh/completions
 
-echo "⚙️ Copiando .zshrc para ~"
+echo "⚙️ Copiando arquivos de configuração..."
 cp .zshrc ~/
 cp .p10k.zsh ~/
 
-echo "✅ Instalado. Reinicie o shell ou rode: source ~/.zshrc"
+echo "✅ Instalação finalizada! Reinicie o shell ou rode: source ~/.zshrc"
