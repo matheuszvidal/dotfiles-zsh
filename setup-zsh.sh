@@ -26,4 +26,13 @@ echo "⚙️ Copiando arquivos de configuração..."
 cp .zshrc ~/
 cp .p10k.zsh ~/
 
+# ─── Definindo ZSH como shell padrão ──────────────────────────────────────────
+if command -v chsh >/dev/null 2>&1; then
+  echo "🔧 Alterando shell padrão para zsh..."
+  chsh -s "$(which zsh)"
+else
+  echo "⚠️ 'chsh' não disponível ou sem efeito no WSL. Se necessário, adicione a linha abaixo ao final do seu ~/.bashrc:"
+  echo "    exec zsh"
+fi
+
 echo "✅ Instalação finalizada! Reinicie o shell ou rode: source ~/.zshrc"
